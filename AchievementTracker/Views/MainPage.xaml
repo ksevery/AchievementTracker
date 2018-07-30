@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AchievementTracker"
+    xmlns:custom="clr-namespace:AchievementTracker.Custom"
+    x:Class="AchievementTracker.Views.MainPage">
+    <ContentPage.Resources>
+        <StyleSheet Source="Assets/main-page.css" />
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add Achievement" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <custom:ExtendedFlexLayout StyleId="mainLayout" ItemsSource="{Binding Achievements}" Wrap="Wrap" JustifyContent="SpaceEvenly">
+            <custom:ExtendedFlexLayout.ItemTemplate>
+                <DataTemplate>
+                    <Grid FlexLayout.Grow="1" WidthRequest="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Frame Grid.Row="0" BackgroundColor="Blue" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                        <Label Grid.Row="1" StyleClass="nameLabel" Text="{Binding Name}"/>
+                    </Grid>
+
+                </DataTemplate>
+            </custom:ExtendedFlexLayout.ItemTemplate>
+        </custom:ExtendedFlexLayout>
+    </ScrollView>
+</ContentPage>
