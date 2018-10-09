@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.IO;
+using AchievementTracker.Droid.Configuration;
 
 namespace AchievementTracker.Droid
 {
@@ -17,12 +18,11 @@ namespace AchievementTracker.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "exrin.db");
 
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App(dbPath));
+            LoadApplication(new App(new AppConfiguration_Droid()));
         }
     }
 }
